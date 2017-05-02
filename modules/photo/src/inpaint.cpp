@@ -293,7 +293,7 @@ icvTeleaInpaintFMM(const CvMat *f, CvMat *t, CvMat *out, int range, CvPriorityQu
             else if(q==1) {i=ii;   j=jj-1;}
             else if(q==2) {i=ii+1; j=jj;}
             else if(q==3) {i=ii;   j=jj+1;}
-            if ((i<=1)||(j<=1)||(i>t->rows-1)||(j>t->cols-1)) continue;
+            if ((i<=-1)||(j<=-1)||(i>t->rows-3)||(j>t->cols-3)) continue;
 
             if (CV_MAT_ELEM(*f,uchar,i,j)==INSIDE) {
                dist = min4(FastMarching_solve(i-1,j,i,j-1,f,t),
@@ -405,7 +405,7 @@ icvTeleaInpaintFMM(const CvMat *f, CvMat *t, CvMat *out, int range, CvPriorityQu
             else if(q==1) {i=ii;   j=jj-1;}
             else if(q==2) {i=ii+1; j=jj;}
             else if(q==3) {i=ii;   j=jj+1;}
-            if ((i<=1)||(j<=1)||(i>t->rows-1)||(j>t->cols-1)) continue;
+            if ((i<=-1)||(j<=-1)||(i>t->rows-3)||(j>t->cols-3)) continue;
 
             if (CV_MAT_ELEM(*f,uchar,i,j)==INSIDE) {
                dist = min4(FastMarching_solve(i-1,j,i,j-1,f,t),
@@ -525,7 +525,7 @@ icvNSInpaintFMM(const CvMat *f, CvMat *t, CvMat *out, int range, CvPriorityQueue
             else if(q==1) {i=ii;   j=jj-1;}
             else if(q==2) {i=ii+1; j=jj;}
             else if(q==3) {i=ii;   j=jj+1;}
-            if ((i<=1)||(j<=1)||(i>t->rows-1)||(j>t->cols-1)) continue;
+            if ((i<=0)||(j<=0)||(i>t->rows-2)||(j>t->cols-2)) continue;
 
             if (CV_MAT_ELEM(*f,uchar,i,j)==INSIDE) {
                dist = min4(FastMarching_solve(i-1,j,i,j-1,f,t),
@@ -613,7 +613,7 @@ icvNSInpaintFMM(const CvMat *f, CvMat *t, CvMat *out, int range, CvPriorityQueue
             else if(q==1) {i=ii;   j=jj-1;}
             else if(q==2) {i=ii+1; j=jj;}
             else if(q==3) {i=ii;   j=jj+1;}
-            if ((i<=1)||(j<=1)||(i>t->rows-1)||(j>t->cols-1)) continue;
+            if ((i<=0)||(j<=0)||(i>t->rows-2)||(j>t->cols-2)) continue;
 
             if (CV_MAT_ELEM(*f,uchar,i,j)==INSIDE) {
                dist = min4(FastMarching_solve(i-1,j,i,j-1,f,t),
